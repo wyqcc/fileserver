@@ -30,7 +30,7 @@ class APIUploadHandler(View):
         e_list_type = ['tev', 'humiture', 'infra']
         if types in e_list_type:
             if types == 'tev' or types == 'humiture':
-                root = paths + '/tev(温度)/{}/'.format(json_obj['upload_time'])
+                root = paths + '\\tev(温度)\\{}\\'.format(json_obj['upload_time'])
                 if not os.path.exists(root):
                     os.makedirs(root)
                 file_name = json_obj['file_name']

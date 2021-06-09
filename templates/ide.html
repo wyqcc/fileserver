@@ -1,774 +1,1208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="robots" content="NONE,NOARCHIVE">
-  <title>AttributeError
-          at /api/upload</title>
-  <style type="text/css">
-    html * { padding:0; margin:0; }
-    body * { padding:10px 20px; }
-    body * * { padding:0; }
-    body { font:small sans-serif; background-color:#fff; color:#000; }
-    body>div { border-bottom:1px solid #ddd; }
-    h1 { font-weight:normal; }
-    h2 { margin-bottom:.8em; }
-    h3 { margin:1em 0 .5em 0; }
-    h4 { margin:0 0 .5em 0; font-weight: normal; }
-    code, pre { font-size: 100%; white-space: pre-wrap; }
-    table { border:1px solid #ccc; border-collapse: collapse; width:100%; background:white; }
-    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
-    thead th {
-      padding:1px 6px 1px 3px; background:#fefefe; text-align:left;
-      font-weight:normal; font-size:11px; border:1px solid #ddd;
-    }
-    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em; }
-    table.vars { margin:5px 0 2px 40px; }
-    table.vars td, table.req td { font-family:monospace; }
-    table td.code { width:100%; }
-    table td.code pre { overflow:hidden; }
-    table.source th { color:#666; }
-    table.source td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
-    ul.traceback { list-style-type:none; color: #222; }
-    ul.traceback li.frame { padding-bottom:1em; color:#4f4f4f; }
-    ul.traceback li.user { background-color:#e0e0e0; color:#000 }
-    div.context { padding:10px 0; overflow:hidden; }
-    div.context ol { padding-left:30px; margin:0 10px; list-style-position: inside; }
-    div.context ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer; padding-left: 2px; }
-    div.context ol li pre { display:inline; }
-    div.context ol.context-line li { color:#464646; background-color:#dfdfdf; padding: 3px 2px; }
-    div.context ol.context-line li span { position:absolute; right:32px; }
-    .user div.context ol.context-line li { background-color:#bbb; color:#000; }
-    .user div.context ol li { color:#666; }
-    div.commands { margin-left: 40px; }
-    div.commands a { color:#555; text-decoration:none; }
-    .user div.commands a { color: black; }
-    #summary { background: #ffc; }
-    #summary h2 { font-weight: normal; color: #666; }
-    #explanation { background:#eee; }
-    #template, #template-not-exist { background:#f6f6f6; }
-    #template-not-exist ul { margin: 0 0 10px 20px; }
-    #template-not-exist .postmortem-section { margin-bottom: 3px; }
-    #unicode-hint { background:#eee; }
-    #traceback { background:#eee; }
-    #requestinfo { background:#f6f6f6; padding-left:120px; }
-    #summary table { border:none; background:transparent; }
-    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
-    #requestinfo h3 { margin-bottom:-1em; }
-    .error { background: #ffc; }
-    .specific { color:#cc3300; font-weight:bold; }
-    h2 span.commands { font-size:.7em; font-weight:normal; }
-    span.commands a:link {color:#5E5694;}
-    pre.exception_value { font-family: sans-serif; color: #575757; font-size: 1.5em; margin: 10px 0 10px 0; }
-    .append-bottom { margin-bottom: 10px; }
-  </style>
-
-  <script type="text/javascript">
-    function hideAll(elems) {
-      for (var e = 0; e < elems.length; e++) {
-        elems[e].style.display = 'none';
-      }
-    }
-    window.onload = function() {
-      hideAll(document.querySelectorAll('table.vars'));
-      hideAll(document.querySelectorAll('ol.pre-context'));
-      hideAll(document.querySelectorAll('ol.post-context'));
-      hideAll(document.querySelectorAll('div.pastebin'));
-    }
-    function toggle() {
-      for (var i = 0; i < arguments.length; i++) {
-        var e = document.getElementById(arguments[i]);
-        if (e) {
-          e.style.display = e.style.display == 'none' ? 'block': 'none';
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="robots" content="NONE,NOARCHIVE">
+    <title>AttributeError
+        at /api/upload</title>
+    <style type="text/css">
+        html * {
+            padding: 0;
+            margin: 0;
         }
-      }
-      return false;
-    }
-    function varToggle(link, id) {
-      toggle('v' + id);
-      var s = link.getElementsByTagName('span')[0];
-      var uarr = String.fromCharCode(0x25b6);
-      var darr = String.fromCharCode(0x25bc);
-      s.textContent = s.textContent == uarr ? darr : uarr;
-      return false;
-    }
-    function switchPastebinFriendly(link) {
-      s1 = "Switch to copy-and-paste view";
-      s2 = "Switch back to interactive view";
-      link.textContent = link.textContent.trim() == s1 ? s2: s1;
-      toggle('browserTraceback', 'pastebinTraceback');
-      return false;
-    }
-  </script>
+
+        body * {
+            padding: 10px 20px;
+        }
+
+        body * * {
+            padding: 0;
+        }
+
+        body {
+            font: small sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+
+        body > div {
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 {
+            font-weight: normal;
+        }
+
+        h2 {
+            margin-bottom: .8em;
+        }
+
+        h3 {
+            margin: 1em 0 .5em 0;
+        }
+
+        h4 {
+            margin: 0 0 .5em 0;
+            font-weight: normal;
+        }
+
+        code, pre {
+            font-size: 100%;
+            white-space: pre-wrap;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+
+        tbody td, tbody th {
+            vertical-align: top;
+            padding: 2px 3px;
+        }
+
+        thead th {
+            padding: 1px 6px 1px 3px;
+            background: #fefefe;
+            text-align: left;
+            font-weight: normal;
+            font-size: 11px;
+            border: 1px solid #ddd;
+        }
+
+        tbody th {
+            width: 12em;
+            text-align: right;
+            color: #666;
+            padding-right: .5em;
+        }
+
+        table.vars {
+            margin: 5px 0 2px 40px;
+        }
+
+        table.vars td, table.req td {
+            font-family: monospace;
+        }
+
+        table td.code {
+            width: 100%;
+        }
+
+        table td.code pre {
+            overflow: hidden;
+        }
+
+        table.source th {
+            color: #666;
+        }
+
+        table.source td {
+            font-family: monospace;
+            white-space: pre;
+            border-bottom: 1px solid #eee;
+        }
+
+        ul.traceback {
+            list-style-type: none;
+            color: #222;
+        }
+
+        ul.traceback li.frame {
+            padding-bottom: 1em;
+            color: #4f4f4f;
+        }
+
+        ul.traceback li.user {
+            background-color: #e0e0e0;
+            color: #000
+        }
+
+        div.context {
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        div.context ol {
+            padding-left: 30px;
+            margin: 0 10px;
+            list-style-position: inside;
+        }
+
+        div.context ol li {
+            font-family: monospace;
+            white-space: pre;
+            color: #777;
+            cursor: pointer;
+            padding-left: 2px;
+        }
+
+        div.context ol li pre {
+            display: inline;
+        }
+
+        div.context ol.context-line li {
+            color: #464646;
+            background-color: #dfdfdf;
+            padding: 3px 2px;
+        }
+
+        div.context ol.context-line li span {
+            position: absolute;
+            right: 32px;
+        }
+
+        .user div.context ol.context-line li {
+            background-color: #bbb;
+            color: #000;
+        }
+
+        .user div.context ol li {
+            color: #666;
+        }
+
+        div.commands {
+            margin-left: 40px;
+        }
+
+        div.commands a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .user div.commands a {
+            color: black;
+        }
+
+        #summary {
+            background: #ffc;
+        }
+
+        #summary h2 {
+            font-weight: normal;
+            color: #666;
+        }
+
+        #explanation {
+            background: #eee;
+        }
+
+        #template, #template-not-exist {
+            background: #f6f6f6;
+        }
+
+        #template-not-exist ul {
+            margin: 0 0 10px 20px;
+        }
+
+        #template-not-exist .postmortem-section {
+            margin-bottom: 3px;
+        }
+
+        #unicode-hint {
+            background: #eee;
+        }
+
+        #traceback {
+            background: #eee;
+        }
+
+        #requestinfo {
+            background: #f6f6f6;
+            padding-left: 120px;
+        }
+
+        #summary table {
+            border: none;
+            background: transparent;
+        }
+
+        #requestinfo h2, #requestinfo h3 {
+            position: relative;
+            margin-left: -100px;
+        }
+
+        #requestinfo h3 {
+            margin-bottom: -1em;
+        }
+
+        .error {
+            background: #ffc;
+        }
+
+        .specific {
+            color: #cc3300;
+            font-weight: bold;
+        }
+
+        h2 span.commands {
+            font-size: .7em;
+            font-weight: normal;
+        }
+
+        span.commands a:link {
+            color: #5E5694;
+        }
+
+        pre.exception_value {
+            font-family: sans-serif;
+            color: #575757;
+            font-size: 1.5em;
+            margin: 10px 0 10px 0;
+        }
+
+        .append-bottom {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function hideAll(elems) {
+            for (var e = 0; e < elems.length; e++) {
+                elems[e].style.display = 'none';
+            }
+        }
+
+        window.onload = function () {
+            hideAll(document.querySelectorAll('table.vars'));
+            hideAll(document.querySelectorAll('ol.pre-context'));
+            hideAll(document.querySelectorAll('ol.post-context'));
+            hideAll(document.querySelectorAll('div.pastebin'));
+        }
+
+        function toggle() {
+            for (var i = 0; i < arguments.length; i++) {
+                var e = document.getElementById(arguments[i]);
+                if (e) {
+                    e.style.display = e.style.display == 'none' ? 'block' : 'none';
+                }
+            }
+            return false;
+        }
+
+        function varToggle(link, id) {
+            toggle('v' + id);
+            var s = link.getElementsByTagName('span')[0];
+            var uarr = String.fromCharCode(0x25b6);
+            var darr = String.fromCharCode(0x25bc);
+            s.textContent = s.textContent == uarr ? darr : uarr;
+            return false;
+        }
+
+        function switchPastebinFriendly(link) {
+            s1 = "Switch to copy-and-paste view";
+            s2 = "Switch back to interactive view";
+            link.textContent = link.textContent.trim() == s1 ? s2 : s1;
+            toggle('browserTraceback', 'pastebinTraceback');
+            return false;
+        }
+    </script>
 
 </head>
 <body>
 <div id="summary">
-  <h1>AttributeError
-       at /api/upload</h1>
-  <pre class="exception_value">&#39;NoneType&#39; object has no attribute &#39;name&#39;</pre>
-  <table class="meta">
+    <h1>AttributeError
+        at /api/upload</h1>
+    <pre class="exception_value">&#39;NoneType&#39; object has no attribute &#39;name&#39;</pre>
+    <table class="meta">
 
-    <tr>
-      <th>Request Method:</th>
-      <td>POST</td>
-    </tr>
-    <tr>
-      <th>Request URL:</th>
-      <td>http://192.168.0.105:8000/api/upload</td>
-    </tr>
+        <tr>
+            <th>Request Method:</th>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <th>Request URL:</th>
+            <td>http://192.168.0.105:8000/api/upload</td>
+        </tr>
 
-    <tr>
-      <th>Django Version:</th>
-      <td>2.2.22</td>
-    </tr>
+        <tr>
+            <th>Django Version:</th>
+            <td>2.2.22</td>
+        </tr>
 
-    <tr>
-      <th>Exception Type:</th>
-      <td>AttributeError</td>
-    </tr>
-
-
-    <tr>
-      <th>Exception Value:</th>
-      <td><pre>&#39;NoneType&#39; object has no attribute &#39;name&#39;</pre></td>
-    </tr>
+        <tr>
+            <th>Exception Type:</th>
+            <td>AttributeError</td>
+        </tr>
 
 
-    <tr>
-      <th>Exception Location:</th>
-      <td>H:\fileserver\files\views.py in post, line 13</td>
-    </tr>
+        <tr>
+            <th>Exception Value:</th>
+            <td>
+                <pre>&#39;NoneType&#39; object has no attribute &#39;name&#39;</pre>
+            </td>
+        </tr>
 
-    <tr>
-      <th>Python Executable:</th>
-      <td>G:\python37-env\fileserver\Scripts\python.exe</td>
-    </tr>
-    <tr>
-      <th>Python Version:</th>
-      <td>3.7.9</td>
-    </tr>
-    <tr>
-      <th>Python Path:</th>
-      <td><pre>[&#39;H:\\fileserver&#39;,
+
+        <tr>
+            <th>Exception Location:</th>
+            <td>H:\fileserver\files\views.py in post, line 13</td>
+        </tr>
+
+        <tr>
+            <th>Python Executable:</th>
+            <td>G:\python37-env\fileserver\Scripts\python.exe</td>
+        </tr>
+        <tr>
+            <th>Python Version:</th>
+            <td>3.7.9</td>
+        </tr>
+        <tr>
+            <th>Python Path:</th>
+            <td><pre>[&#39;H:\\fileserver&#39;,
  &#39;G:\\python37\\python37.zip&#39;,
  &#39;G:\\python37\\DLLs&#39;,
  &#39;G:\\python37\\lib&#39;,
  &#39;G:\\python37&#39;,
  &#39;G:\\python37-env\\fileserver&#39;,
- &#39;G:\\python37-env\\fileserver\\lib\\site-packages&#39;]</pre></td>
-    </tr>
-    <tr>
-      <th>Server time:</th>
-      <td>Thu, 13 May 2021 02:23:28 +0000</td>
-    </tr>
-  </table>
+ &#39;G:\\python37-env\\fileserver\\lib\\site-packages&#39;]</pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Server time:</th>
+            <td>Thu, 13 May 2021 02:23:28 +0000</td>
+        </tr>
+    </table>
 </div>
 
 
-
-
 <div id="traceback">
-  <h2>Traceback <span class="commands"><a href="#" onclick="return switchPastebinFriendly(this);">
+    <h2>Traceback <span class="commands"><a href="#" onclick="return switchPastebinFriendly(this);">
     Switch to copy-and-paste view</a></span>
-  </h2>
-  <div id="browserTraceback">
-    <ul class="traceback">
+    </h2>
+    <div id="browserTraceback">
+        <ul class="traceback">
 
 
-        <li class="frame django">
-          <code>G:\python37-env\fileserver\lib\site-packages\django\core\handlers\exception.py</code> in <code>inner</code>
+            <li class="frame django">
+                <code>G:\python37-env\fileserver\lib\site-packages\django\core\handlers\exception.py</code> in <code>inner</code>
 
 
-            <div class="context" id="c2764025826504">
+                <div class="context" id="c2764025826504">
 
-                <ol start="27" class="pre-context" id="pre2764025826504">
+                    <ol start="27" class="pre-context" id="pre2764025826504">
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    This decorator is automatically applied to all middleware to ensure that</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    This decorator is automatically applied to all middleware to ensure that</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    no middleware leaks an exception and that the next middleware in the stack</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    no middleware leaks an exception and that the next middleware in the stack</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    can rely on getting a response instead of an exception.</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    can rely on getting a response instead of an exception.</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    &quot;&quot;&quot;</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    &quot;&quot;&quot;</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    @wraps(get_response)</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    @wraps(get_response)</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    def inner(request):</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    def inner(request):</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>        try:</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>        try:</pre>
+                        </li>
 
-                </ol>
+                    </ol>
 
-              <ol start="34" class="context-line">
-                <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>            response = get_response(request)</pre> <span>…</span></li>
-              </ol>
+                    <ol start="34" class="context-line">
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>            response = get_response(request)</pre>
+                            <span>…</span></li>
+                    </ol>
 
-                <ol start='35' class="post-context" id="post2764025826504">
+                    <ol start='35' class="post-context" id="post2764025826504">
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>        except Exception as exc:</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>        except Exception as exc:</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>            response = response_for_exception(request, exc)</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>            response = response_for_exception(request, exc)</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>        return response</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>        return response</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre>    return inner</pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre>    return inner</pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre></pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre></pre>
+                        </li>
 
-                  <li onclick="toggle('pre2764025826504', 'post2764025826504')"><pre></pre></li>
+                        <li onclick="toggle('pre2764025826504', 'post2764025826504')">
+                            <pre></pre>
+                        </li>
 
-              </ol>
+                    </ol>
 
-            </div>
+                </div>
 
 
-
-            <div class="commands">
+                <div class="commands">
 
                     <a href="#" onclick="return varToggle(this, '2764025826504')"><span>&#x25b6;</span> Local vars</a>
 
-            </div>
-            <table class="vars" id="v2764025826504">
-              <thead>
-                <tr>
-                  <th>Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
+                </div>
+                <table class="vars" id="v2764025826504">
+                    <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                  <tr>
-                    <td>exc</td>
-                    <td class="code"><pre>AttributeError(&quot;&#39;NoneType&#39; object has no attribute &#39;name&#39;&quot;)</pre></td>
-                  </tr>
+                    <tr>
+                        <td>exc</td>
+                        <td class="code">
+                            <pre>AttributeError(&quot;&#39;NoneType&#39; object has no attribute &#39;name&#39;&quot;)</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>get_response</td>
-                    <td class="code"><pre>&lt;bound method BaseHandler._get_response of &lt;django.core.handlers.wsgi.WSGIHandler object at 0x000002838C20D208&gt;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>get_response</td>
+                        <td class="code">
+                            <pre>&lt;bound method BaseHandler._get_response of &lt;django.core.handlers.wsgi.WSGIHandler object at 0x000002838C20D208&gt;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>request</td>
+                        <td class="code">
+                            <pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-              </tbody>
-            </table>
+                    </tbody>
+                </table>
 
-        </li>
-
-
-        <li class="frame django">
-          <code>G:\python37-env\fileserver\lib\site-packages\django\core\handlers\base.py</code> in <code>_get_response</code>
-
-
-            <div class="context" id="c2764025826696">
-
-                <ol start="108" class="pre-context" id="pre2764025826696">
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>                break</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>        if response is None:</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>            try:</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>            except Exception as e:</pre></li>
-
-                </ol>
-
-              <ol start="115" class="context-line">
-                <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>                response = self.process_exception_by_middleware(e, request)</pre> <span>…</span></li>
-              </ol>
-
-                <ol start='116' class="post-context" id="post2764025826696">
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>        # Complain if the view returned None (a common error).</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>        if response is None:</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>            if isinstance(callback, types.FunctionType):    # FBV</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>                view_name = callback.__name__</pre></li>
-
-                  <li onclick="toggle('pre2764025826696', 'post2764025826696')"><pre>            else:                                           # CBV</pre></li>
-
-              </ol>
-
-            </div>
+            </li>
 
 
+            <li class="frame django">
+                <code>G:\python37-env\fileserver\lib\site-packages\django\core\handlers\base.py</code> in <code>_get_response</code>
 
-            <div class="commands">
+
+                <div class="context" id="c2764025826696">
+
+                    <ol start="108" class="pre-context" id="pre2764025826696">
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>                break</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>        if response is None:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>            wrapped_callback = self.make_view_atomic(callback)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>            try:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>            except Exception as e:</pre>
+                        </li>
+
+                    </ol>
+
+                    <ol start="115" class="context-line">
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>                response = self.process_exception_by_middleware(e, request)</pre>
+                            <span>…</span></li>
+                    </ol>
+
+                    <ol start='116' class="post-context" id="post2764025826696">
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>        # Complain if the view returned None (a common error).</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>        if response is None:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>            if isinstance(callback, types.FunctionType):    # FBV</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>                view_name = callback.__name__</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826696', 'post2764025826696')">
+                            <pre>            else:                                           # CBV</pre>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+                <div class="commands">
 
                     <a href="#" onclick="return varToggle(this, '2764025826696')"><span>&#x25b6;</span> Local vars</a>
 
-            </div>
-            <table class="vars" id="v2764025826696">
-              <thead>
-                <tr>
-                  <th>Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
+                </div>
+                <table class="vars" id="v2764025826696">
+                    <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                  <tr>
-                    <td>callback</td>
-                    <td class="code"><pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>callback</td>
+                        <td class="code">
+                            <pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>callback_args</td>
-                    <td class="code"><pre>()</pre></td>
-                  </tr>
+                    <tr>
+                        <td>callback_args</td>
+                        <td class="code">
+                            <pre>()</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>callback_kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
-                  </tr>
+                    <tr>
+                        <td>callback_kwargs</td>
+                        <td class="code">
+                            <pre>{}</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>request</td>
+                        <td class="code">
+                            <pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>resolver</td>
-                    <td class="code"><pre>&lt;URLResolver &#39;fileserver.urls&#39; (None:None) &#39;^/&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>resolver</td>
+                        <td class="code">
+                            <pre>&lt;URLResolver &#39;fileserver.urls&#39; (None:None) &#39;^/&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>resolver_match</td>
-                    <td class="code"><pre>ResolverMatch(func=files.views.APIUploadHandler, args=(), kwargs={}, url_name=None, app_names=[], namespaces=[], route=api/upload)</pre></td>
-                  </tr>
+                    <tr>
+                        <td>resolver_match</td>
+                        <td class="code">
+                            <pre>ResolverMatch(func=files.views.APIUploadHandler, args=(), kwargs={}, url_name=None, app_names=[], namespaces=[], route=api/upload)</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>response</td>
-                    <td class="code"><pre>None</pre></td>
-                  </tr>
+                    <tr>
+                        <td>response</td>
+                        <td class="code">
+                            <pre>None</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>self</td>
-                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x000002838C20D208&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>self</td>
+                        <td class="code">
+                            <pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x000002838C20D208&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>wrapped_callback</td>
-                    <td class="code"><pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>wrapped_callback</td>
+                        <td class="code">
+                            <pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre>
+                        </td>
+                    </tr>
 
-              </tbody>
-            </table>
+                    </tbody>
+                </table>
 
-        </li>
-
-
-        <li class="frame django">
-          <code>G:\python37-env\fileserver\lib\site-packages\django\core\handlers\base.py</code> in <code>_get_response</code>
-
-
-            <div class="context" id="c2764025823752">
-
-                <ol start="106" class="pre-context" id="pre2764025823752">
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>            response = middleware_method(request, callback, callback_args, callback_kwargs)</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>            if response:</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>                break</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>        if response is None:</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>            try:</pre></li>
-
-                </ol>
-
-              <ol start="113" class="context-line">
-                <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre> <span>…</span></li>
-              </ol>
-
-                <ol start='114' class="post-context" id="post2764025823752">
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>            except Exception as e:</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>                response = self.process_exception_by_middleware(e, request)</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>        # Complain if the view returned None (a common error).</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>        if response is None:</pre></li>
-
-                  <li onclick="toggle('pre2764025823752', 'post2764025823752')"><pre>            if isinstance(callback, types.FunctionType):    # FBV</pre></li>
-
-              </ol>
-
-            </div>
+            </li>
 
 
+            <li class="frame django">
+                <code>G:\python37-env\fileserver\lib\site-packages\django\core\handlers\base.py</code> in <code>_get_response</code>
 
-            <div class="commands">
+
+                <div class="context" id="c2764025823752">
+
+                    <ol start="106" class="pre-context" id="pre2764025823752">
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>            response = middleware_method(request, callback, callback_args, callback_kwargs)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>            if response:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>                break</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>        if response is None:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>            wrapped_callback = self.make_view_atomic(callback)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>            try:</pre>
+                        </li>
+
+                    </ol>
+
+                    <ol start="113" class="context-line">
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre>
+                            <span>…</span></li>
+                    </ol>
+
+                    <ol start='114' class="post-context" id="post2764025823752">
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>            except Exception as e:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>                response = self.process_exception_by_middleware(e, request)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>        # Complain if the view returned None (a common error).</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>        if response is None:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025823752', 'post2764025823752')">
+                            <pre>            if isinstance(callback, types.FunctionType):    # FBV</pre>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+                <div class="commands">
 
                     <a href="#" onclick="return varToggle(this, '2764025823752')"><span>&#x25b6;</span> Local vars</a>
 
-            </div>
-            <table class="vars" id="v2764025823752">
-              <thead>
-                <tr>
-                  <th>Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
+                </div>
+                <table class="vars" id="v2764025823752">
+                    <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                  <tr>
-                    <td>callback</td>
-                    <td class="code"><pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>callback</td>
+                        <td class="code">
+                            <pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>callback_args</td>
-                    <td class="code"><pre>()</pre></td>
-                  </tr>
+                    <tr>
+                        <td>callback_args</td>
+                        <td class="code">
+                            <pre>()</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>callback_kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
-                  </tr>
+                    <tr>
+                        <td>callback_kwargs</td>
+                        <td class="code">
+                            <pre>{}</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>request</td>
+                        <td class="code">
+                            <pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>resolver</td>
-                    <td class="code"><pre>&lt;URLResolver &#39;fileserver.urls&#39; (None:None) &#39;^/&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>resolver</td>
+                        <td class="code">
+                            <pre>&lt;URLResolver &#39;fileserver.urls&#39; (None:None) &#39;^/&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>resolver_match</td>
-                    <td class="code"><pre>ResolverMatch(func=files.views.APIUploadHandler, args=(), kwargs={}, url_name=None, app_names=[], namespaces=[], route=api/upload)</pre></td>
-                  </tr>
+                    <tr>
+                        <td>resolver_match</td>
+                        <td class="code">
+                            <pre>ResolverMatch(func=files.views.APIUploadHandler, args=(), kwargs={}, url_name=None, app_names=[], namespaces=[], route=api/upload)</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>response</td>
-                    <td class="code"><pre>None</pre></td>
-                  </tr>
+                    <tr>
+                        <td>response</td>
+                        <td class="code">
+                            <pre>None</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>self</td>
-                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x000002838C20D208&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>self</td>
+                        <td class="code">
+                            <pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x000002838C20D208&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>wrapped_callback</td>
-                    <td class="code"><pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>wrapped_callback</td>
+                        <td class="code">
+                            <pre>&lt;function APIUploadHandler at 0x000002838C76AD38&gt;</pre>
+                        </td>
+                    </tr>
 
-              </tbody>
-            </table>
+                    </tbody>
+                </table>
 
-        </li>
-
-
-        <li class="frame django">
-          <code>G:\python37-env\fileserver\lib\site-packages\django\views\generic\base.py</code> in <code>view</code>
-
-
-            <div class="context" id="c2764025826440">
-
-                <ol start="64" class="pre-context" id="pre2764025826440">
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>                self.head = self.get</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>            self.setup(request, *args, **kwargs)</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>            if not hasattr(self, &#39;request&#39;):</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>                raise AttributeError(</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>                    &quot;%s instance has no &#39;request&#39; attribute. Did you override &quot;</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>                    &quot;setup() and forget to call super()?&quot; % cls.__name__</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>                )</pre></li>
-
-                </ol>
-
-              <ol start="71" class="context-line">
-                <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>            return self.dispatch(request, *args, **kwargs)</pre> <span>…</span></li>
-              </ol>
-
-                <ol start='72' class="post-context" id="post2764025826440">
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>        view.view_class = cls</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>        view.view_initkwargs = initkwargs</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>        # take name and docstring from class</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre>        update_wrapper(view, cls, updated=())</pre></li>
-
-                  <li onclick="toggle('pre2764025826440', 'post2764025826440')"><pre></pre></li>
-
-              </ol>
-
-            </div>
+            </li>
 
 
+            <li class="frame django">
+                <code>G:\python37-env\fileserver\lib\site-packages\django\views\generic\base.py</code> in
+                <code>view</code>
 
-            <div class="commands">
+
+                <div class="context" id="c2764025826440">
+
+                    <ol start="64" class="pre-context" id="pre2764025826440">
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>                self.head = self.get</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>            self.setup(request, *args, **kwargs)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>            if not hasattr(self, &#39;request&#39;):</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>                raise AttributeError(</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>                    &quot;%s instance has no &#39;request&#39; attribute. Did you override &quot;</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>                    &quot;setup() and forget to call super()?&quot; % cls.__name__</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>                )</pre>
+                        </li>
+
+                    </ol>
+
+                    <ol start="71" class="context-line">
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>            return self.dispatch(request, *args, **kwargs)</pre>
+                            <span>…</span></li>
+                    </ol>
+
+                    <ol start='72' class="post-context" id="post2764025826440">
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>        view.view_class = cls</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>        view.view_initkwargs = initkwargs</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>        # take name and docstring from class</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre>        update_wrapper(view, cls, updated=())</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025826440', 'post2764025826440')">
+                            <pre></pre>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+                <div class="commands">
 
                     <a href="#" onclick="return varToggle(this, '2764025826440')"><span>&#x25b6;</span> Local vars</a>
 
-            </div>
-            <table class="vars" id="v2764025826440">
-              <thead>
-                <tr>
-                  <th>Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
+                </div>
+                <table class="vars" id="v2764025826440">
+                    <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                  <tr>
-                    <td>args</td>
-                    <td class="code"><pre>()</pre></td>
-                  </tr>
+                    <tr>
+                        <td>args</td>
+                        <td class="code">
+                            <pre>()</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>cls</td>
-                    <td class="code"><pre>&lt;class &#39;files.views.APIUploadHandler&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>cls</td>
+                        <td class="code">
+                            <pre>&lt;class &#39;files.views.APIUploadHandler&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>initkwargs</td>
-                    <td class="code"><pre>{}</pre></td>
-                  </tr>
+                    <tr>
+                        <td>initkwargs</td>
+                        <td class="code">
+                            <pre>{}</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
-                  </tr>
+                    <tr>
+                        <td>kwargs</td>
+                        <td class="code">
+                            <pre>{}</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>request</td>
+                        <td class="code">
+                            <pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>self</td>
-                    <td class="code"><pre>&lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>self</td>
+                        <td class="code">
+                            <pre>&lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;</pre>
+                        </td>
+                    </tr>
 
-              </tbody>
-            </table>
+                    </tbody>
+                </table>
 
-        </li>
-
-
-        <li class="frame django">
-          <code>G:\python37-env\fileserver\lib\site-packages\django\views\generic\base.py</code> in <code>dispatch</code>
-
-
-            <div class="context" id="c2764025824776">
-
-                <ol start="90" class="pre-context" id="pre2764025824776">
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        # Try to dispatch to the right method; if a method doesn&#39;t exist,</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        # defer to the error handler. Also defer to the error handler if the</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        # request method isn&#39;t on the approved list.</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        if request.method.lower() in self.http_method_names:</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        else:</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>            handler = self.http_method_not_allowed</pre></li>
-
-                </ol>
-
-              <ol start="97" class="context-line">
-                <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        return handler(request, *args, **kwargs)</pre> <span>…</span></li>
-              </ol>
-
-                <ol start='98' class="post-context" id="post2764025824776">
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>    def http_method_not_allowed(self, request, *args, **kwargs):</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        logger.warning(</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>            &#39;Method Not Allowed (%s): %s&#39;, request.method, request.path,</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>            extra={&#39;status_code&#39;: 405, &#39;request&#39;: request}</pre></li>
-
-                  <li onclick="toggle('pre2764025824776', 'post2764025824776')"><pre>        )</pre></li>
-
-              </ol>
-
-            </div>
+            </li>
 
 
+            <li class="frame django">
+                <code>G:\python37-env\fileserver\lib\site-packages\django\views\generic\base.py</code> in
+                <code>dispatch</code>
 
-            <div class="commands">
+
+                <div class="context" id="c2764025824776">
+
+                    <ol start="90" class="pre-context" id="pre2764025824776">
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        # Try to dispatch to the right method; if a method doesn&#39;t exist,</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        # defer to the error handler. Also defer to the error handler if the</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        # request method isn&#39;t on the approved list.</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        if request.method.lower() in self.http_method_names:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        else:</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>            handler = self.http_method_not_allowed</pre>
+                        </li>
+
+                    </ol>
+
+                    <ol start="97" class="context-line">
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        return handler(request, *args, **kwargs)</pre>
+                            <span>…</span></li>
+                    </ol>
+
+                    <ol start='98' class="post-context" id="post2764025824776">
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>    def http_method_not_allowed(self, request, *args, **kwargs):</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        logger.warning(</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>            &#39;Method Not Allowed (%s): %s&#39;, request.method, request.path,</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>            extra={&#39;status_code&#39;: 405, &#39;request&#39;: request}</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764025824776', 'post2764025824776')">
+                            <pre>        )</pre>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+                <div class="commands">
 
                     <a href="#" onclick="return varToggle(this, '2764025824776')"><span>&#x25b6;</span> Local vars</a>
 
-            </div>
-            <table class="vars" id="v2764025824776">
-              <thead>
-                <tr>
-                  <th>Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
+                </div>
+                <table class="vars" id="v2764025824776">
+                    <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                  <tr>
-                    <td>args</td>
-                    <td class="code"><pre>()</pre></td>
-                  </tr>
+                    <tr>
+                        <td>args</td>
+                        <td class="code">
+                            <pre>()</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>handler</td>
-                    <td class="code"><pre>&lt;bound method APIUploadHandler.post of &lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>handler</td>
+                        <td class="code">
+                            <pre>&lt;bound method APIUploadHandler.post of &lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
-                  </tr>
+                    <tr>
+                        <td>kwargs</td>
+                        <td class="code">
+                            <pre>{}</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>request</td>
+                        <td class="code">
+                            <pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>self</td>
-                    <td class="code"><pre>&lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>self</td>
+                        <td class="code">
+                            <pre>&lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;</pre>
+                        </td>
+                    </tr>
 
-              </tbody>
-            </table>
+                    </tbody>
+                </table>
 
-        </li>
-
-
-        <li class="frame user">
-          <code>H:\fileserver\files\views.py</code> in <code>post</code>
-
-
-            <div class="context" id="c2764022199624">
-
-                <ol start="6" class="pre-context" id="pre2764022199624">
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre># Create your views here.</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>from fileserver.settings import BASE_DIR</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>from django.views import View</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>class APIUploadHandler(View):</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>    def post(self, request):</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>        obj = request.FILES.get(&#39;file&#39;)</pre></li>
-
-                </ol>
-
-              <ol start="13" class="context-line">
-                <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>        print(obj.name)</pre> <span>…</span></li>
-              </ol>
-
-                <ol start='14' class="post-context" id="post2764022199624">
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>        f=open(&#39;static/&#39;+obj.name,&#39;wb+&#39;)</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre></pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>        for chunk in obj.chunks():</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>            print(chunk)</pre></li>
-
-                  <li onclick="toggle('pre2764022199624', 'post2764022199624')"><pre>            f.write(chunk)</pre></li>
-
-              </ol>
-
-            </div>
+            </li>
 
 
+            <li class="frame user">
+                <code>H:\fileserver\files\views.py</code> in <code>post</code>
 
-            <div class="commands">
+
+                <div class="context" id="c2764022199624">
+
+                    <ol start="6" class="pre-context" id="pre2764022199624">
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre># Create your views here.</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>from fileserver.settings import BASE_DIR</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>from django.views import View</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>class APIUploadHandler(View):</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>    def post(self, request):</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>        obj = request.FILES.get(&#39;file&#39;)</pre>
+                        </li>
+
+                    </ol>
+
+                    <ol start="13" class="context-line">
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>        print(obj.name)</pre>
+                            <span>…</span></li>
+                    </ol>
+
+                    <ol start='14' class="post-context" id="post2764022199624">
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>        f=open(&#39;static/&#39;+obj.name,&#39;wb+&#39;)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre></pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>        for chunk in obj.chunks():</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>            print(chunk)</pre>
+                        </li>
+
+                        <li onclick="toggle('pre2764022199624', 'post2764022199624')">
+                            <pre>            f.write(chunk)</pre>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+                <div class="commands">
 
                     <a href="#" onclick="return varToggle(this, '2764022199624')"><span>&#x25b6;</span> Local vars</a>
 
-            </div>
-            <table class="vars" id="v2764022199624">
-              <thead>
-                <tr>
-                  <th>Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
+                </div>
+                <table class="vars" id="v2764022199624">
+                    <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                  <tr>
-                    <td>obj</td>
-                    <td class="code"><pre>None</pre></td>
-                  </tr>
+                    <tr>
+                        <td>obj</td>
+                        <td class="code">
+                            <pre>None</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>request</td>
+                        <td class="code">
+                            <pre>&lt;WSGIRequest: POST &#39;/api/upload&#39;&gt;</pre>
+                        </td>
+                    </tr>
 
-                  <tr>
-                    <td>self</td>
-                    <td class="code"><pre>&lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;</pre></td>
-                  </tr>
+                    <tr>
+                        <td>self</td>
+                        <td class="code">
+                            <pre>&lt;files.views.APIUploadHandler object at 0x000002838C985188&gt;</pre>
+                        </td>
+                    </tr>
 
-              </tbody>
-            </table>
+                    </tbody>
+                </table>
 
-        </li>
+            </li>
 
-    </ul>
-  </div>
-  <form action="http://dpaste.com/" name="pasteform" id="pasteform" method="post">
+        </ul>
+    </div>
+    <form action="http://dpaste.com/" name="pasteform" id="pasteform" method="post">
 
-  <div id="pastebinTraceback" class="pastebin">
-    <input type="hidden" name="language" value="PythonConsole">
-    <input type="hidden" name="title"
-      value="AttributeError at /api/upload">
-    <input type="hidden" name="source" value="Django Dpaste Agent">
-    <input type="hidden" name="poster" value="Django">
-    <textarea name="content" id="traceback_area" cols="140" rows="25">
+        <div id="pastebinTraceback" class="pastebin">
+            <input type="hidden" name="language" value="PythonConsole">
+            <input type="hidden" name="title"
+                   value="AttributeError at /api/upload">
+            <input type="hidden" name="source" value="Django Dpaste Agent">
+            <input type="hidden" name="poster" value="Django">
+            <textarea name="content" id="traceback_area" cols="140" rows="25">
 Environment:
 
 
@@ -818,631 +1252,839 @@ File "H:\fileserver\files\views.py" in post
 Exception Type: AttributeError at /api/upload
 Exception Value: &#39;NoneType&#39; object has no attribute &#39;name&#39;
 </textarea>
-  <br><br>
-  <input type="submit" value="Share this traceback on a public website">
-  </div>
-</form>
+            <br><br>
+            <input type="submit" value="Share this traceback on a public website">
+        </div>
+    </form>
 </div>
 
 
-
 <div id="requestinfo">
-  <h2>Request information</h2>
-
+    <h2>Request information</h2>
 
 
     <h3 id="user-info">USER</h3>
     <p>AnonymousUser</p>
 
 
-  <h3 id="get-info">GET</h3>
+    <h3 id="get-info">GET</h3>
 
     <p>No GET data</p>
 
 
-  <h3 id="post-info">POST</h3>
+    <h3 id="post-info">POST</h3>
 
     <table class="req">
-      <thead>
+        <thead>
         <tr>
-          <th>Variable</th>
-          <th>Value</th>
+            <th>Variable</th>
+            <th>Value</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
 
-          <tr>
+        <tr>
             <td></td>
-            <td class="code"><pre>&#39;&#39;</pre></td>
-          </tr>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
+        </tr>
 
-      </tbody>
+        </tbody>
     </table>
 
-  <h3 id="files-info">FILES</h3>
+    <h3 id="files-info">FILES</h3>
 
     <p>No FILES data</p>
 
 
-
-  <h3 id="cookie-info">COOKIES</h3>
+    <h3 id="cookie-info">COOKIES</h3>
 
     <p>No cookie data</p>
 
 
-  <h3 id="meta-info">META</h3>
-  <table class="req">
-    <thead>
-      <tr>
-        <th>Variable</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
+    <h3 id="meta-info">META</h3>
+    <table class="req">
+        <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
 
         <tr>
-          <td>ALLUSERSPROFILE</td>
-          <td class="code"><pre>&#39;C:\\ProgramData&#39;</pre></td>
+            <td>ALLUSERSPROFILE</td>
+            <td class="code">
+                <pre>&#39;C:\\ProgramData&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>APPDATA</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\AppData\\Roaming&#39;</pre></td>
+            <td>APPDATA</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\AppData\\Roaming&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>ASL.LOG</td>
-          <td class="code"><pre>&#39;Destination=file&#39;</pre></td>
+            <td>ASL.LOG</td>
+            <td class="code">
+                <pre>&#39;Destination=file&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>COMMONPROGRAMFILES</td>
-          <td class="code"><pre>&#39;C:\\Program Files\\Common Files&#39;</pre></td>
+            <td>COMMONPROGRAMFILES</td>
+            <td class="code">
+                <pre>&#39;C:\\Program Files\\Common Files&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>COMMONPROGRAMFILES(X86)</td>
-          <td class="code"><pre>&#39;C:\\Program Files (x86)\\Common Files&#39;</pre></td>
+            <td>COMMONPROGRAMFILES(X86)</td>
+            <td class="code">
+                <pre>&#39;C:\\Program Files (x86)\\Common Files&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>COMMONPROGRAMW6432</td>
-          <td class="code"><pre>&#39;C:\\Program Files\\Common Files&#39;</pre></td>
+            <td>COMMONPROGRAMW6432</td>
+            <td class="code">
+                <pre>&#39;C:\\Program Files\\Common Files&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>COMPUTERNAME</td>
-          <td class="code"><pre>&#39;DESKTOP-D4D1BSR&#39;</pre></td>
+            <td>COMPUTERNAME</td>
+            <td class="code">
+                <pre>&#39;DESKTOP-D4D1BSR&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>COMSPEC</td>
-          <td class="code"><pre>&#39;C:\\Windows\\system32\\cmd.exe&#39;</pre></td>
+            <td>COMSPEC</td>
+            <td class="code">
+                <pre>&#39;C:\\Windows\\system32\\cmd.exe&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CONTENT_LENGTH</td>
-          <td class="code"><pre>&#39;1&#39;</pre></td>
+            <td>CONTENT_LENGTH</td>
+            <td class="code">
+                <pre>&#39;1&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CONTENT_TYPE</td>
-          <td class="code"><pre>&#39;application/x-www-form-urlencoded&#39;</pre></td>
+            <td>CONTENT_TYPE</td>
+            <td class="code">
+                <pre>&#39;application/x-www-form-urlencoded&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DJANGO_SETTINGS_MODULE</td>
-          <td class="code"><pre>&#39;fileserver.settings&#39;</pre></td>
+            <td>DJANGO_SETTINGS_MODULE</td>
+            <td class="code">
+                <pre>&#39;fileserver.settings&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DNX_HOME</td>
-          <td class="code"><pre>&#39;%USERPROFILE%\\.dnx&#39;</pre></td>
+            <td>DNX_HOME</td>
+            <td class="code">
+                <pre>&#39;%USERPROFILE%\\.dnx&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DRIVERDATA</td>
-          <td class="code"><pre>&#39;C:\\Windows\\System32\\Drivers\\DriverData&#39;</pre></td>
+            <td>DRIVERDATA</td>
+            <td class="code">
+                <pre>&#39;C:\\Windows\\System32\\Drivers\\DriverData&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FPS_BROWSER_APP_PROFILE_STRING</td>
-          <td class="code"><pre>&#39;Internet Explorer&#39;</pre></td>
+            <td>FPS_BROWSER_APP_PROFILE_STRING</td>
+            <td class="code">
+                <pre>&#39;Internet Explorer&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FPS_BROWSER_USER_PROFILE_STRING</td>
-          <td class="code"><pre>&#39;Default&#39;</pre></td>
+            <td>FPS_BROWSER_USER_PROFILE_STRING</td>
+            <td class="code">
+                <pre>&#39;Default&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>GATEWAY_INTERFACE</td>
-          <td class="code"><pre>&#39;CGI/1.1&#39;</pre></td>
+            <td>GATEWAY_INTERFACE</td>
+            <td class="code">
+                <pre>&#39;CGI/1.1&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HOMEDRIVE</td>
-          <td class="code"><pre>&#39;C:&#39;</pre></td>
+            <td>HOMEDRIVE</td>
+            <td class="code">
+                <pre>&#39;C:&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HOMEPATH</td>
-          <td class="code"><pre>&#39;\\Users\\lanzhi&#39;</pre></td>
+            <td>HOMEPATH</td>
+            <td class="code">
+                <pre>&#39;\\Users\\lanzhi&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_ACCEPT</td>
-          <td class="code"><pre>&#39;*/*&#39;</pre></td>
+            <td>HTTP_ACCEPT</td>
+            <td class="code">
+                <pre>&#39;*/*&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_ACCEPT_ENCODING</td>
-          <td class="code"><pre>&#39;gzip, deflate, br&#39;</pre></td>
+            <td>HTTP_ACCEPT_ENCODING</td>
+            <td class="code">
+                <pre>&#39;gzip, deflate, br&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_CACHE_CONTROL</td>
-          <td class="code"><pre>&#39;no-cache&#39;</pre></td>
+            <td>HTTP_CACHE_CONTROL</td>
+            <td class="code">
+                <pre>&#39;no-cache&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_CONNECTION</td>
-          <td class="code"><pre>&#39;keep-alive&#39;</pre></td>
+            <td>HTTP_CONNECTION</td>
+            <td class="code">
+                <pre>&#39;keep-alive&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_HOST</td>
-          <td class="code"><pre>&#39;192.168.0.105:8000&#39;</pre></td>
+            <td>HTTP_HOST</td>
+            <td class="code">
+                <pre>&#39;192.168.0.105:8000&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_POSTMAN_TOKEN</td>
-          <td class="code"><pre>&#39;b78c586f-a497-4548-af51-cab21a24d5c0&#39;</pre></td>
+            <td>HTTP_POSTMAN_TOKEN</td>
+            <td class="code">
+                <pre>&#39;b78c586f-a497-4548-af51-cab21a24d5c0&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>HTTP_USER_AGENT</td>
-          <td class="code"><pre>&#39;PostmanRuntime/7.28.0&#39;</pre></td>
+            <td>HTTP_USER_AGENT</td>
+            <td class="code">
+                <pre>&#39;PostmanRuntime/7.28.0&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>IDEA_INITIAL_DIRECTORY</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\Desktop&#39;</pre></td>
+            <td>IDEA_INITIAL_DIRECTORY</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\Desktop&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOCALAPPDATA</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\AppData\\Local&#39;</pre></td>
+            <td>LOCALAPPDATA</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\AppData\\Local&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOGONSERVER</td>
-          <td class="code"><pre>&#39;\\\\DESKTOP-D4D1BSR&#39;</pre></td>
+            <td>LOGONSERVER</td>
+            <td class="code">
+                <pre>&#39;\\\\DESKTOP-D4D1BSR&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>NUMBER_OF_PROCESSORS</td>
-          <td class="code"><pre>&#39;6&#39;</pre></td>
+            <td>NUMBER_OF_PROCESSORS</td>
+            <td class="code">
+                <pre>&#39;6&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>ONEDRIVE</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\OneDrive&#39;</pre></td>
+            <td>ONEDRIVE</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\OneDrive&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>OS</td>
-          <td class="code"><pre>&#39;Windows_NT&#39;</pre></td>
+            <td>OS</td>
+            <td class="code">
+                <pre>&#39;Windows_NT&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PATH</td>
-          <td class="code"><pre>(&#39;G:\\python37-env\\fileserver\\Scripts;G:\\python37\\Scripts\\;G:\\python37\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;G:\\mysql\\bin;C:\\Users\\lanzhi\\Desktop\\test_file\\lanzhi\\package\\nssm-2.24-101-g897c7ad\\nssm-2.24-101-g897c7ad\\win64;E:\\Redis\\;G:\\git\\Git\\cmd;C:\\Program &#39;
+            <td>PATH</td>
+            <td class="code"><pre>(&#39;G:\\python37-env\\fileserver\\Scripts;G:\\python37\\Scripts\\;G:\\python37\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;G:\\mysql\\bin;C:\\Users\\lanzhi\\Desktop\\test_file\\lanzhi\\package\\nssm-2.24-101-g897c7ad\\nssm-2.24-101-g897c7ad\\win64;E:\\Redis\\;G:\\git\\Git\\cmd;C:\\Program &#39;
  &#39;Files\\TortoiseSVN\\bin;G:\\svnserver\\bin;G:\\New Folder\\;C:\\Program &#39;
  &#39;Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program &#39;
  &#39;Files\\Google\\Chrome\\Application\\;G:\\Xshell\\;G:\\xftp7\\;G:\\Microsoft &#39;
  &#39;VS &#39;
  &#39;Code\\bin;C:\\MinGW\\bin;C:\\Users\\lanzhi\\.dnx\\bin;C:\\Users\\lanzhi\\AppData\\Local\\Microsoft\\WindowsApps;G:\\PyCharm &#39;
  &#39;2020.1\\bin;G:\\PyCharm Community Edition &#39;
- &#39;2020.3.2\\bin;C:\\Users\\lanzhi\\AppData\\Roaming\\npm&#39;)</pre></td>
+ &#39;2020.3.2\\bin;C:\\Users\\lanzhi\\AppData\\Roaming\\npm&#39;)</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PATHEXT</td>
-          <td class="code"><pre>&#39;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW&#39;</pre></td>
+            <td>PATHEXT</td>
+            <td class="code">
+                <pre>&#39;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PATH_INFO</td>
-          <td class="code"><pre>&#39;/api/upload&#39;</pre></td>
+            <td>PATH_INFO</td>
+            <td class="code">
+                <pre>&#39;/api/upload&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROCESSOR_ARCHITECTURE</td>
-          <td class="code"><pre>&#39;AMD64&#39;</pre></td>
+            <td>PROCESSOR_ARCHITECTURE</td>
+            <td class="code">
+                <pre>&#39;AMD64&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROCESSOR_IDENTIFIER</td>
-          <td class="code"><pre>&#39;Intel64 Family 6 Model 158 Stepping 13, GenuineIntel&#39;</pre></td>
+            <td>PROCESSOR_IDENTIFIER</td>
+            <td class="code">
+                <pre>&#39;Intel64 Family 6 Model 158 Stepping 13, GenuineIntel&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROCESSOR_LEVEL</td>
-          <td class="code"><pre>&#39;6&#39;</pre></td>
+            <td>PROCESSOR_LEVEL</td>
+            <td class="code">
+                <pre>&#39;6&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROCESSOR_REVISION</td>
-          <td class="code"><pre>&#39;9e0d&#39;</pre></td>
+            <td>PROCESSOR_REVISION</td>
+            <td class="code">
+                <pre>&#39;9e0d&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROGRAMDATA</td>
-          <td class="code"><pre>&#39;C:\\ProgramData&#39;</pre></td>
+            <td>PROGRAMDATA</td>
+            <td class="code">
+                <pre>&#39;C:\\ProgramData&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROGRAMFILES</td>
-          <td class="code"><pre>&#39;C:\\Program Files&#39;</pre></td>
+            <td>PROGRAMFILES</td>
+            <td class="code">
+                <pre>&#39;C:\\Program Files&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROGRAMFILES(X86)</td>
-          <td class="code"><pre>&#39;C:\\Program Files (x86)&#39;</pre></td>
+            <td>PROGRAMFILES(X86)</td>
+            <td class="code">
+                <pre>&#39;C:\\Program Files (x86)&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROGRAMW6432</td>
-          <td class="code"><pre>&#39;C:\\Program Files&#39;</pre></td>
+            <td>PROGRAMW6432</td>
+            <td class="code">
+                <pre>&#39;C:\\Program Files&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PROMPT</td>
-          <td class="code"><pre>&#39;(fileserver) $P$G&#39;</pre></td>
+            <td>PROMPT</td>
+            <td class="code">
+                <pre>&#39;(fileserver) $P$G&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PSMODULEPATH</td>
-          <td class="code"><pre>(&#39;C:\\Program &#39;
- &#39;Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules;G:\\svnserver\\PowerShellModules&#39;)</pre></td>
+            <td>PSMODULEPATH</td>
+            <td class="code"><pre>(&#39;C:\\Program &#39;
+ &#39;Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules;G:\\svnserver\\PowerShellModules&#39;)</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PUBLIC</td>
-          <td class="code"><pre>&#39;C:\\Users\\Public&#39;</pre></td>
+            <td>PUBLIC</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\Public&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PYCHARM</td>
-          <td class="code"><pre>&#39;G:\\PyCharm 2020.1\\bin;&#39;</pre></td>
+            <td>PYCHARM</td>
+            <td class="code">
+                <pre>&#39;G:\\PyCharm 2020.1\\bin;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PYCHARM COMMUNITY EDITION</td>
-          <td class="code"><pre>&#39;G:\\PyCharm Community Edition 2020.3.2\\bin;&#39;</pre></td>
+            <td>PYCHARM COMMUNITY EDITION</td>
+            <td class="code">
+                <pre>&#39;G:\\PyCharm Community Edition 2020.3.2\\bin;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>QUERY_STRING</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>QUERY_STRING</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>REMOTE_ADDR</td>
-          <td class="code"><pre>&#39;192.168.0.105&#39;</pre></td>
+            <td>REMOTE_ADDR</td>
+            <td class="code">
+                <pre>&#39;192.168.0.105&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>REMOTE_HOST</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>REMOTE_HOST</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>REQUEST_METHOD</td>
-          <td class="code"><pre>&#39;POST&#39;</pre></td>
+            <td>REQUEST_METHOD</td>
+            <td class="code">
+                <pre>&#39;POST&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>RUN_MAIN</td>
-          <td class="code"><pre>&#39;true&#39;</pre></td>
+            <td>RUN_MAIN</td>
+            <td class="code">
+                <pre>&#39;true&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SCRIPT_NAME</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>SCRIPT_NAME</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SERVER_NAME</td>
-          <td class="code"><pre>&#39;DESKTOP-D4D1BSR&#39;</pre></td>
+            <td>SERVER_NAME</td>
+            <td class="code">
+                <pre>&#39;DESKTOP-D4D1BSR&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SERVER_PORT</td>
-          <td class="code"><pre>&#39;8000&#39;</pre></td>
+            <td>SERVER_PORT</td>
+            <td class="code">
+                <pre>&#39;8000&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SERVER_PROTOCOL</td>
-          <td class="code"><pre>&#39;HTTP/1.1&#39;</pre></td>
+            <td>SERVER_PROTOCOL</td>
+            <td class="code">
+                <pre>&#39;HTTP/1.1&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SERVER_SOFTWARE</td>
-          <td class="code"><pre>&#39;WSGIServer/0.2&#39;</pre></td>
+            <td>SERVER_SOFTWARE</td>
+            <td class="code">
+                <pre>&#39;WSGIServer/0.2&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSIONNAME</td>
-          <td class="code"><pre>&#39;Console&#39;</pre></td>
+            <td>SESSIONNAME</td>
+            <td class="code">
+                <pre>&#39;Console&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SYSTEMDRIVE</td>
-          <td class="code"><pre>&#39;C:&#39;</pre></td>
+            <td>SYSTEMDRIVE</td>
+            <td class="code">
+                <pre>&#39;C:&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SYSTEMROOT</td>
-          <td class="code"><pre>&#39;C:\\Windows&#39;</pre></td>
+            <td>SYSTEMROOT</td>
+            <td class="code">
+                <pre>&#39;C:\\Windows&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TEMP</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\AppData\\Local\\Temp&#39;</pre></td>
+            <td>TEMP</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\AppData\\Local\\Temp&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TERMINAL_EMULATOR</td>
-          <td class="code"><pre>&#39;JetBrains-JediTerm&#39;</pre></td>
+            <td>TERMINAL_EMULATOR</td>
+            <td class="code">
+                <pre>&#39;JetBrains-JediTerm&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TMP</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\AppData\\Local\\Temp&#39;</pre></td>
+            <td>TMP</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\AppData\\Local\\Temp&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USERDOMAIN</td>
-          <td class="code"><pre>&#39;DESKTOP-D4D1BSR&#39;</pre></td>
+            <td>USERDOMAIN</td>
+            <td class="code">
+                <pre>&#39;DESKTOP-D4D1BSR&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USERDOMAIN_ROAMINGPROFILE</td>
-          <td class="code"><pre>&#39;DESKTOP-D4D1BSR&#39;</pre></td>
+            <td>USERDOMAIN_ROAMINGPROFILE</td>
+            <td class="code">
+                <pre>&#39;DESKTOP-D4D1BSR&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USERNAME</td>
-          <td class="code"><pre>&#39;lanzhi&#39;</pre></td>
+            <td>USERNAME</td>
+            <td class="code">
+                <pre>&#39;lanzhi&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USERPROFILE</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi&#39;</pre></td>
+            <td>USERPROFILE</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>VIRTUAL_ENV</td>
-          <td class="code"><pre>&#39;G:\\python37-env\\fileserver&#39;</pre></td>
+            <td>VIRTUAL_ENV</td>
+            <td class="code">
+                <pre>&#39;G:\\python37-env\\fileserver&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>VISUALSVN_SERVER</td>
-          <td class="code"><pre>&#39;G:\\svnserver\\&#39;</pre></td>
+            <td>VISUALSVN_SERVER</td>
+            <td class="code">
+                <pre>&#39;G:\\svnserver\\&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>VS140COMNTOOLS</td>
-          <td class="code"><pre>&#39;G:\\新建文件夹 (3)\\Common7\\Tools\\&#39;</pre></td>
+            <td>VS140COMNTOOLS</td>
+            <td class="code">
+                <pre>&#39;G:\\新建文件夹 (3)\\Common7\\Tools\\&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>WINDIR</td>
-          <td class="code"><pre>&#39;C:\\Windows&#39;</pre></td>
+            <td>WINDIR</td>
+            <td class="code">
+                <pre>&#39;C:\\Windows&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>ZES_ENABLE_SYSMAN</td>
-          <td class="code"><pre>&#39;1&#39;</pre></td>
+            <td>ZES_ENABLE_SYSMAN</td>
+            <td class="code">
+                <pre>&#39;1&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>_OLD_VIRTUAL_PATH</td>
-          <td class="code"><pre>(&#39;G:\\python37\\Scripts\\;G:\\python37\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;G:\\mysql\\bin;C:\\Users\\lanzhi\\Desktop\\test_file\\lanzhi\\package\\nssm-2.24-101-g897c7ad\\nssm-2.24-101-g897c7ad\\win64;E:\\Redis\\;G:\\git\\Git\\cmd;C:\\Program &#39;
+            <td>_OLD_VIRTUAL_PATH</td>
+            <td class="code"><pre>(&#39;G:\\python37\\Scripts\\;G:\\python37\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;G:\\mysql\\bin;C:\\Users\\lanzhi\\Desktop\\test_file\\lanzhi\\package\\nssm-2.24-101-g897c7ad\\nssm-2.24-101-g897c7ad\\win64;E:\\Redis\\;G:\\git\\Git\\cmd;C:\\Program &#39;
  &#39;Files\\TortoiseSVN\\bin;G:\\svnserver\\bin;G:\\New Folder\\;C:\\Program &#39;
  &#39;Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program &#39;
  &#39;Files\\Google\\Chrome\\Application\\;G:\\Xshell\\;G:\\xftp7\\;G:\\Microsoft &#39;
  &#39;VS &#39;
  &#39;Code\\bin;C:\\MinGW\\bin;C:\\Users\\lanzhi\\.dnx\\bin;C:\\Users\\lanzhi\\AppData\\Local\\Microsoft\\WindowsApps;G:\\PyCharm &#39;
  &#39;2020.1\\bin;G:\\PyCharm Community Edition &#39;
- &#39;2020.3.2\\bin;C:\\Users\\lanzhi\\AppData\\Roaming\\npm&#39;)</pre></td>
+ &#39;2020.3.2\\bin;C:\\Users\\lanzhi\\AppData\\Roaming\\npm&#39;)</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>_OLD_VIRTUAL_PROMPT</td>
-          <td class="code"><pre>&#39;$P$G&#39;</pre></td>
+            <td>_OLD_VIRTUAL_PROMPT</td>
+            <td class="code">
+                <pre>&#39;$P$G&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>__INTELLIJ_COMMAND_HISTFILE__</td>
-          <td class="code"><pre>&#39;C:\\Users\\lanzhi\\AppData\\Roaming\\JetBrains\\PyCharm2020.1\\terminal\\history\\history-88&#39;</pre></td>
+            <td>__INTELLIJ_COMMAND_HISTFILE__</td>
+            <td class="code">
+                <pre>&#39;C:\\Users\\lanzhi\\AppData\\Roaming\\JetBrains\\PyCharm2020.1\\terminal\\history\\history-88&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.errors</td>
-          <td class="code"><pre>&lt;_io.TextIOWrapper name=&#39;&lt;stderr&gt;&#39; mode=&#39;w&#39; encoding=&#39;utf-8&#39;&gt;</pre></td>
+            <td>wsgi.errors</td>
+            <td class="code">
+                <pre>&lt;_io.TextIOWrapper name=&#39;&lt;stderr&gt;&#39; mode=&#39;w&#39; encoding=&#39;utf-8&#39;&gt;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.file_wrapper</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>wsgi.file_wrapper</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.input</td>
-          <td class="code"><pre>&lt;django.core.handlers.wsgi.LimitedStream object at 0x000002838CC925C8&gt;</pre></td>
+            <td>wsgi.input</td>
+            <td class="code">
+                <pre>&lt;django.core.handlers.wsgi.LimitedStream object at 0x000002838CC925C8&gt;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.multiprocess</td>
-          <td class="code"><pre>False</pre></td>
+            <td>wsgi.multiprocess</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.multithread</td>
-          <td class="code"><pre>True</pre></td>
+            <td>wsgi.multithread</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.run_once</td>
-          <td class="code"><pre>False</pre></td>
+            <td>wsgi.run_once</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.url_scheme</td>
-          <td class="code"><pre>&#39;http&#39;</pre></td>
+            <td>wsgi.url_scheme</td>
+            <td class="code">
+                <pre>&#39;http&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>wsgi.version</td>
-          <td class="code"><pre>(1, 0)</pre></td>
+            <td>wsgi.version</td>
+            <td class="code">
+                <pre>(1, 0)</pre>
+            </td>
         </tr>
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
 
 
-  <h3 id="settings-info">Settings</h3>
-  <h4>Using settings module <code>fileserver.settings</code></h4>
-  <table class="req">
-    <thead>
-      <tr>
-        <th>Setting</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-
+    <h3 id="settings-info">Settings</h3>
+    <h4>Using settings module <code>fileserver.settings</code></h4>
+    <table class="req">
+        <thead>
         <tr>
-          <td>ABSOLUTE_URL_OVERRIDES</td>
-          <td class="code"><pre>{}</pre></td>
+            <th>Setting</th>
+            <th>Value</th>
         </tr>
+        </thead>
+        <tbody>
 
         <tr>
-          <td>ADMINS</td>
-          <td class="code"><pre>[]</pre></td>
-        </tr>
-
-        <tr>
-          <td>ALLOWED_HOSTS</td>
-          <td class="code"><pre>[&#39;*&#39;]</pre></td>
+            <td>ABSOLUTE_URL_OVERRIDES</td>
+            <td class="code">
+                <pre>{}</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>APPEND_SLASH</td>
-          <td class="code"><pre>True</pre></td>
+            <td>ADMINS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>AUTHENTICATION_BACKENDS</td>
-          <td class="code"><pre>[&#39;django.contrib.auth.backends.ModelBackend&#39;]</pre></td>
+            <td>ALLOWED_HOSTS</td>
+            <td class="code">
+                <pre>[&#39;*&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>AUTH_PASSWORD_VALIDATORS</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>APPEND_SLASH</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>AUTH_USER_MODEL</td>
-          <td class="code"><pre>&#39;auth.User&#39;</pre></td>
+            <td>AUTHENTICATION_BACKENDS</td>
+            <td class="code">
+                <pre>[&#39;django.contrib.auth.backends.ModelBackend&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>BASE_DIR</td>
-          <td class="code"><pre>&#39;H:\\fileserver&#39;</pre></td>
+            <td>AUTH_PASSWORD_VALIDATORS</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CACHES</td>
-          <td class="code"><pre>{&#39;default&#39;: {&#39;BACKEND&#39;: &#39;django.core.cache.backends.locmem.LocMemCache&#39;}}</pre></td>
+            <td>AUTH_USER_MODEL</td>
+            <td class="code">
+                <pre>&#39;auth.User&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CACHE_MIDDLEWARE_ALIAS</td>
-          <td class="code"><pre>&#39;default&#39;</pre></td>
+            <td>BASE_DIR</td>
+            <td class="code">
+                <pre>&#39;H:\\fileserver&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>CACHES</td>
+            <td class="code">
+                <pre>{&#39;default&#39;: {&#39;BACKEND&#39;: &#39;django.core.cache.backends.locmem.LocMemCache&#39;}}</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CACHE_MIDDLEWARE_SECONDS</td>
-          <td class="code"><pre>600</pre></td>
+            <td>CACHE_MIDDLEWARE_ALIAS</td>
+            <td class="code">
+                <pre>&#39;default&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_AGE</td>
-          <td class="code"><pre>31449600</pre></td>
+            <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_DOMAIN</td>
-          <td class="code"><pre>None</pre></td>
+            <td>CACHE_MIDDLEWARE_SECONDS</td>
+            <td class="code">
+                <pre>600</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_HTTPONLY</td>
-          <td class="code"><pre>False</pre></td>
+            <td>CSRF_COOKIE_AGE</td>
+            <td class="code">
+                <pre>31449600</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_NAME</td>
-          <td class="code"><pre>&#39;csrftoken&#39;</pre></td>
+            <td>CSRF_COOKIE_DOMAIN</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_PATH</td>
-          <td class="code"><pre>&#39;/&#39;</pre></td>
+            <td>CSRF_COOKIE_HTTPONLY</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_SAMESITE</td>
-          <td class="code"><pre>&#39;Lax&#39;</pre></td>
+            <td>CSRF_COOKIE_NAME</td>
+            <td class="code">
+                <pre>&#39;csrftoken&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_COOKIE_SECURE</td>
-          <td class="code"><pre>False</pre></td>
+            <td>CSRF_COOKIE_PATH</td>
+            <td class="code">
+                <pre>&#39;/&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_FAILURE_VIEW</td>
-          <td class="code"><pre>&#39;django.views.csrf.csrf_failure&#39;</pre></td>
+            <td>CSRF_COOKIE_SAMESITE</td>
+            <td class="code">
+                <pre>&#39;Lax&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_HEADER_NAME</td>
-          <td class="code"><pre>&#39;HTTP_X_CSRFTOKEN&#39;</pre></td>
+            <td>CSRF_COOKIE_SECURE</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_TRUSTED_ORIGINS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>CSRF_FAILURE_VIEW</td>
+            <td class="code">
+                <pre>&#39;django.views.csrf.csrf_failure&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>CSRF_USE_SESSIONS</td>
-          <td class="code"><pre>False</pre></td>
+            <td>CSRF_HEADER_NAME</td>
+            <td class="code">
+                <pre>&#39;HTTP_X_CSRFTOKEN&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATABASES</td>
-          <td class="code"><pre>{&#39;default&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+            <td>CSRF_TRUSTED_ORIGINS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>CSRF_USE_SESSIONS</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>DATABASES</td>
+            <td class="code"><pre>{&#39;default&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
              &#39;AUTOCOMMIT&#39;: True,
              &#39;CONN_MAX_AGE&#39;: 0,
              &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
@@ -1457,32 +2099,41 @@ Exception Value: &#39;NoneType&#39; object has no attribute &#39;name&#39;
                       &#39;MIRROR&#39;: None,
                       &#39;NAME&#39;: None},
              &#39;TIME_ZONE&#39;: None,
-             &#39;USER&#39;: &#39;root&#39;}}</pre></td>
+             &#39;USER&#39;: &#39;root&#39;}}</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATABASE_ROUTERS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>DATABASE_ROUTERS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATA_UPLOAD_MAX_MEMORY_SIZE</td>
-          <td class="code"><pre>2621440</pre></td>
+            <td>DATA_UPLOAD_MAX_MEMORY_SIZE</td>
+            <td class="code">
+                <pre>2621440</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATA_UPLOAD_MAX_NUMBER_FIELDS</td>
-          <td class="code"><pre>1000</pre></td>
+            <td>DATA_UPLOAD_MAX_NUMBER_FIELDS</td>
+            <td class="code">
+                <pre>1000</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATETIME_FORMAT</td>
-          <td class="code"><pre>&#39;N j, Y, P&#39;</pre></td>
+            <td>DATETIME_FORMAT</td>
+            <td class="code">
+                <pre>&#39;N j, Y, P&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATETIME_INPUT_FORMATS</td>
-          <td class="code"><pre>[&#39;%Y-%m-%d %H:%M:%S&#39;,
+            <td>DATETIME_INPUT_FORMATS</td>
+            <td class="code"><pre>[&#39;%Y-%m-%d %H:%M:%S&#39;,
  &#39;%Y-%m-%d %H:%M:%S.%f&#39;,
  &#39;%Y-%m-%d %H:%M&#39;,
  &#39;%Y-%m-%d&#39;,
@@ -1493,17 +2144,20 @@ Exception Value: &#39;NoneType&#39; object has no attribute &#39;name&#39;
  &#39;%m/%d/%y %H:%M:%S&#39;,
  &#39;%m/%d/%y %H:%M:%S.%f&#39;,
  &#39;%m/%d/%y %H:%M&#39;,
- &#39;%m/%d/%y&#39;]</pre></td>
+ &#39;%m/%d/%y&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATE_FORMAT</td>
-          <td class="code"><pre>&#39;N j, Y&#39;</pre></td>
+            <td>DATE_FORMAT</td>
+            <td class="code">
+                <pre>&#39;N j, Y&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DATE_INPUT_FORMATS</td>
-          <td class="code"><pre>[&#39;%Y-%m-%d&#39;,
+            <td>DATE_INPUT_FORMATS</td>
+            <td class="code"><pre>[&#39;%Y-%m-%d&#39;,
  &#39;%m/%d/%Y&#39;,
  &#39;%m/%d/%y&#39;,
  &#39;%b %d %Y&#39;,
@@ -1513,204 +2167,277 @@ Exception Value: &#39;NoneType&#39; object has no attribute &#39;name&#39;
  &#39;%B %d %Y&#39;,
  &#39;%B %d, %Y&#39;,
  &#39;%d %B %Y&#39;,
- &#39;%d %B, %Y&#39;]</pre></td>
+ &#39;%d %B, %Y&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEBUG</td>
-          <td class="code"><pre>True</pre></td>
+            <td>DEBUG</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEBUG_PROPAGATE_EXCEPTIONS</td>
-          <td class="code"><pre>False</pre></td>
+            <td>DEBUG_PROPAGATE_EXCEPTIONS</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DECIMAL_SEPARATOR</td>
-          <td class="code"><pre>&#39;.&#39;</pre></td>
+            <td>DECIMAL_SEPARATOR</td>
+            <td class="code">
+                <pre>&#39;.&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_CHARSET</td>
-          <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+            <td>DEFAULT_CHARSET</td>
+            <td class="code">
+                <pre>&#39;utf-8&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_CONTENT_TYPE</td>
-          <td class="code"><pre>&#39;text/html&#39;</pre></td>
+            <td>DEFAULT_CONTENT_TYPE</td>
+            <td class="code">
+                <pre>&#39;text/html&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>
-          <td class="code"><pre>&#39;django.views.debug.SafeExceptionReporterFilter&#39;</pre></td>
+            <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>
+            <td class="code">
+                <pre>&#39;django.views.debug.SafeExceptionReporterFilter&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_FILE_STORAGE</td>
-          <td class="code"><pre>&#39;django.core.files.storage.FileSystemStorage&#39;</pre></td>
+            <td>DEFAULT_FILE_STORAGE</td>
+            <td class="code">
+                <pre>&#39;django.core.files.storage.FileSystemStorage&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_FROM_EMAIL</td>
-          <td class="code"><pre>&#39;webmaster@localhost&#39;</pre></td>
+            <td>DEFAULT_FROM_EMAIL</td>
+            <td class="code">
+                <pre>&#39;webmaster@localhost&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_INDEX_TABLESPACE</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>DEFAULT_INDEX_TABLESPACE</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DEFAULT_TABLESPACE</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>DEFAULT_TABLESPACE</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>DISALLOWED_USER_AGENTS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>DISALLOWED_USER_AGENTS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_BACKEND</td>
-          <td class="code"><pre>&#39;django.core.mail.backends.smtp.EmailBackend&#39;</pre></td>
+            <td>EMAIL_BACKEND</td>
+            <td class="code">
+                <pre>&#39;django.core.mail.backends.smtp.EmailBackend&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_HOST</td>
-          <td class="code"><pre>&#39;localhost&#39;</pre></td>
+            <td>EMAIL_HOST</td>
+            <td class="code">
+                <pre>&#39;localhost&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_HOST_PASSWORD</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>EMAIL_HOST_PASSWORD</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_HOST_USER</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>EMAIL_HOST_USER</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_PORT</td>
-          <td class="code"><pre>25</pre></td>
+            <td>EMAIL_PORT</td>
+            <td class="code">
+                <pre>25</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_SSL_CERTFILE</td>
-          <td class="code"><pre>None</pre></td>
+            <td>EMAIL_SSL_CERTFILE</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_SSL_KEYFILE</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>EMAIL_SSL_KEYFILE</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_SUBJECT_PREFIX</td>
-          <td class="code"><pre>&#39;[Django] &#39;</pre></td>
+            <td>EMAIL_SUBJECT_PREFIX</td>
+            <td class="code">
+                <pre>&#39;[Django] &#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_TIMEOUT</td>
-          <td class="code"><pre>None</pre></td>
+            <td>EMAIL_TIMEOUT</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_USE_LOCALTIME</td>
-          <td class="code"><pre>False</pre></td>
+            <td>EMAIL_USE_LOCALTIME</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_USE_SSL</td>
-          <td class="code"><pre>False</pre></td>
+            <td>EMAIL_USE_SSL</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>EMAIL_USE_TLS</td>
-          <td class="code"><pre>False</pre></td>
+            <td>EMAIL_USE_TLS</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FILE_CHARSET</td>
-          <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+            <td>FILE_CHARSET</td>
+            <td class="code">
+                <pre>&#39;utf-8&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FILE_UPLOAD_DIRECTORY_PERMISSIONS</td>
-          <td class="code"><pre>None</pre></td>
+            <td>FILE_UPLOAD_DIRECTORY_PERMISSIONS</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FILE_UPLOAD_HANDLERS</td>
-          <td class="code"><pre>[&#39;django.core.files.uploadhandler.MemoryFileUploadHandler&#39;,
- &#39;django.core.files.uploadhandler.TemporaryFileUploadHandler&#39;]</pre></td>
+            <td>FILE_UPLOAD_HANDLERS</td>
+            <td class="code"><pre>[&#39;django.core.files.uploadhandler.MemoryFileUploadHandler&#39;,
+ &#39;django.core.files.uploadhandler.TemporaryFileUploadHandler&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>
-          <td class="code"><pre>2621440</pre></td>
+            <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>
+            <td class="code">
+                <pre>2621440</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FILE_UPLOAD_PERMISSIONS</td>
-          <td class="code"><pre>None</pre></td>
+            <td>FILE_UPLOAD_PERMISSIONS</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FILE_UPLOAD_TEMP_DIR</td>
-          <td class="code"><pre>None</pre></td>
+            <td>FILE_UPLOAD_TEMP_DIR</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FIRST_DAY_OF_WEEK</td>
-          <td class="code"><pre>0</pre></td>
+            <td>FIRST_DAY_OF_WEEK</td>
+            <td class="code">
+                <pre>0</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FIXTURE_DIRS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>FIXTURE_DIRS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FORCE_SCRIPT_NAME</td>
-          <td class="code"><pre>None</pre></td>
+            <td>FORCE_SCRIPT_NAME</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FORMAT_MODULE_PATH</td>
-          <td class="code"><pre>None</pre></td>
+            <td>FORMAT_MODULE_PATH</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>FORM_RENDERER</td>
-          <td class="code"><pre>&#39;django.forms.renderers.DjangoTemplates&#39;</pre></td>
+            <td>FORM_RENDERER</td>
+            <td class="code">
+                <pre>&#39;django.forms.renderers.DjangoTemplates&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>IGNORABLE_404_URLS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>IGNORABLE_404_URLS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>INSTALLED_APPS</td>
-          <td class="code"><pre>[&#39;django.contrib.admin&#39;,
+            <td>INSTALLED_APPS</td>
+            <td class="code"><pre>[&#39;django.contrib.admin&#39;,
  &#39;django.contrib.auth&#39;,
  &#39;django.contrib.contenttypes&#39;,
  &#39;django.contrib.sessions&#39;,
  &#39;django.contrib.messages&#39;,
  &#39;django.contrib.staticfiles&#39;,
- &#39;files&#39;]</pre></td>
+ &#39;files&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>INTERNAL_IPS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>INTERNAL_IPS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGES</td>
-          <td class="code"><pre>[(&#39;af&#39;, &#39;Afrikaans&#39;),
+            <td>LANGUAGES</td>
+            <td class="code"><pre>[(&#39;af&#39;, &#39;Afrikaans&#39;),
  (&#39;ar&#39;, &#39;Arabic&#39;),
  (&#39;ast&#39;, &#39;Asturian&#39;),
  (&#39;az&#39;, &#39;Azerbaijani&#39;),
@@ -1799,403 +2526,549 @@ Exception Value: &#39;NoneType&#39; object has no attribute &#39;name&#39;
  (&#39;ur&#39;, &#39;Urdu&#39;),
  (&#39;vi&#39;, &#39;Vietnamese&#39;),
  (&#39;zh-hans&#39;, &#39;Simplified Chinese&#39;),
- (&#39;zh-hant&#39;, &#39;Traditional Chinese&#39;)]</pre></td>
+ (&#39;zh-hant&#39;, &#39;Traditional Chinese&#39;)]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGES_BIDI</td>
-          <td class="code"><pre>[&#39;he&#39;, &#39;ar&#39;, &#39;fa&#39;, &#39;ur&#39;]</pre></td>
+            <td>LANGUAGES_BIDI</td>
+            <td class="code">
+                <pre>[&#39;he&#39;, &#39;ar&#39;, &#39;fa&#39;, &#39;ur&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGE_CODE</td>
-          <td class="code"><pre>&#39;en-us&#39;</pre></td>
+            <td>LANGUAGE_CODE</td>
+            <td class="code">
+                <pre>&#39;en-us&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGE_COOKIE_AGE</td>
-          <td class="code"><pre>None</pre></td>
+            <td>LANGUAGE_COOKIE_AGE</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGE_COOKIE_DOMAIN</td>
-          <td class="code"><pre>None</pre></td>
+            <td>LANGUAGE_COOKIE_DOMAIN</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGE_COOKIE_NAME</td>
-          <td class="code"><pre>&#39;django_language&#39;</pre></td>
+            <td>LANGUAGE_COOKIE_NAME</td>
+            <td class="code">
+                <pre>&#39;django_language&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LANGUAGE_COOKIE_PATH</td>
-          <td class="code"><pre>&#39;/&#39;</pre></td>
+            <td>LANGUAGE_COOKIE_PATH</td>
+            <td class="code">
+                <pre>&#39;/&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOCALE_PATHS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>LOCALE_PATHS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOGGING</td>
-          <td class="code"><pre>{}</pre></td>
+            <td>LOGGING</td>
+            <td class="code">
+                <pre>{}</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOGGING_CONFIG</td>
-          <td class="code"><pre>&#39;logging.config.dictConfig&#39;</pre></td>
+            <td>LOGGING_CONFIG</td>
+            <td class="code">
+                <pre>&#39;logging.config.dictConfig&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOGIN_REDIRECT_URL</td>
-          <td class="code"><pre>&#39;/accounts/profile/&#39;</pre></td>
+            <td>LOGIN_REDIRECT_URL</td>
+            <td class="code">
+                <pre>&#39;/accounts/profile/&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOGIN_URL</td>
-          <td class="code"><pre>&#39;/accounts/login/&#39;</pre></td>
+            <td>LOGIN_URL</td>
+            <td class="code">
+                <pre>&#39;/accounts/login/&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>LOGOUT_REDIRECT_URL</td>
-          <td class="code"><pre>None</pre></td>
+            <td>LOGOUT_REDIRECT_URL</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MANAGERS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>MANAGERS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MEDIA_ROOT</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>MEDIA_ROOT</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MEDIA_URL</td>
-          <td class="code"><pre>&#39;&#39;</pre></td>
+            <td>MEDIA_URL</td>
+            <td class="code">
+                <pre>&#39;&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MESSAGE_STORAGE</td>
-          <td class="code"><pre>&#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;</pre></td>
+            <td>MESSAGE_STORAGE</td>
+            <td class="code">
+                <pre>&#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MIDDLEWARE</td>
-          <td class="code"><pre>[&#39;django.middleware.security.SecurityMiddleware&#39;,
+            <td>MIDDLEWARE</td>
+            <td class="code"><pre>[&#39;django.middleware.security.SecurityMiddleware&#39;,
  &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
  &#39;django.middleware.common.CommonMiddleware&#39;,
  &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
  &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
- &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;]</pre></td>
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MIGRATION_MODULES</td>
-          <td class="code"><pre>{}</pre></td>
+            <td>MIGRATION_MODULES</td>
+            <td class="code">
+                <pre>{}</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>MONTH_DAY_FORMAT</td>
-          <td class="code"><pre>&#39;F j&#39;</pre></td>
+            <td>MONTH_DAY_FORMAT</td>
+            <td class="code">
+                <pre>&#39;F j&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>NUMBER_GROUPING</td>
-          <td class="code"><pre>0</pre></td>
+            <td>NUMBER_GROUPING</td>
+            <td class="code">
+                <pre>0</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PASSWORD_HASHERS</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>PASSWORD_HASHERS</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PASSWORD_RESET_TIMEOUT_DAYS</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>PASSWORD_RESET_TIMEOUT_DAYS</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>PREPEND_WWW</td>
-          <td class="code"><pre>False</pre></td>
+            <td>PREPEND_WWW</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>ROOT_URLCONF</td>
-          <td class="code"><pre>&#39;fileserver.urls&#39;</pre></td>
+            <td>ROOT_URLCONF</td>
+            <td class="code">
+                <pre>&#39;fileserver.urls&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECRET_KEY</td>
-          <td class="code"><pre>&#39;********************&#39;</pre></td>
+            <td>SECRET_KEY</td>
+            <td class="code">
+                <pre>&#39;********************&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_BROWSER_XSS_FILTER</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SECURE_BROWSER_XSS_FILTER</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_CONTENT_TYPE_NOSNIFF</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SECURE_CONTENT_TYPE_NOSNIFF</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_HSTS_INCLUDE_SUBDOMAINS</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SECURE_HSTS_INCLUDE_SUBDOMAINS</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_HSTS_PRELOAD</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SECURE_HSTS_PRELOAD</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_HSTS_SECONDS</td>
-          <td class="code"><pre>0</pre></td>
+            <td>SECURE_HSTS_SECONDS</td>
+            <td class="code">
+                <pre>0</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_PROXY_SSL_HEADER</td>
-          <td class="code"><pre>None</pre></td>
+            <td>SECURE_PROXY_SSL_HEADER</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_REDIRECT_EXEMPT</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>SECURE_REDIRECT_EXEMPT</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_SSL_HOST</td>
-          <td class="code"><pre>None</pre></td>
+            <td>SECURE_SSL_HOST</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SECURE_SSL_REDIRECT</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SECURE_SSL_REDIRECT</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SERVER_EMAIL</td>
-          <td class="code"><pre>&#39;root@localhost&#39;</pre></td>
+            <td>SERVER_EMAIL</td>
+            <td class="code">
+                <pre>&#39;root@localhost&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_CACHE_ALIAS</td>
-          <td class="code"><pre>&#39;default&#39;</pre></td>
+            <td>SESSION_CACHE_ALIAS</td>
+            <td class="code">
+                <pre>&#39;default&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_AGE</td>
-          <td class="code"><pre>1209600</pre></td>
+            <td>SESSION_COOKIE_AGE</td>
+            <td class="code">
+                <pre>1209600</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_DOMAIN</td>
-          <td class="code"><pre>None</pre></td>
+            <td>SESSION_COOKIE_DOMAIN</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_HTTPONLY</td>
-          <td class="code"><pre>True</pre></td>
+            <td>SESSION_COOKIE_HTTPONLY</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_NAME</td>
-          <td class="code"><pre>&#39;sessionid&#39;</pre></td>
+            <td>SESSION_COOKIE_NAME</td>
+            <td class="code">
+                <pre>&#39;sessionid&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_PATH</td>
-          <td class="code"><pre>&#39;/&#39;</pre></td>
+            <td>SESSION_COOKIE_PATH</td>
+            <td class="code">
+                <pre>&#39;/&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_SAMESITE</td>
-          <td class="code"><pre>&#39;Lax&#39;</pre></td>
+            <td>SESSION_COOKIE_SAMESITE</td>
+            <td class="code">
+                <pre>&#39;Lax&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_COOKIE_SECURE</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SESSION_COOKIE_SECURE</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_ENGINE</td>
-          <td class="code"><pre>&#39;django.contrib.sessions.backends.db&#39;</pre></td>
+            <td>SESSION_ENGINE</td>
+            <td class="code">
+                <pre>&#39;django.contrib.sessions.backends.db&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_FILE_PATH</td>
-          <td class="code"><pre>None</pre></td>
+            <td>SESSION_FILE_PATH</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_SAVE_EVERY_REQUEST</td>
-          <td class="code"><pre>False</pre></td>
+            <td>SESSION_SAVE_EVERY_REQUEST</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SESSION_SERIALIZER</td>
-          <td class="code"><pre>&#39;django.contrib.sessions.serializers.JSONSerializer&#39;</pre></td>
+            <td>SESSION_SERIALIZER</td>
+            <td class="code">
+                <pre>&#39;django.contrib.sessions.serializers.JSONSerializer&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SETTINGS_MODULE</td>
-          <td class="code"><pre>&#39;fileserver.settings&#39;</pre></td>
+            <td>SETTINGS_MODULE</td>
+            <td class="code">
+                <pre>&#39;fileserver.settings&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SHORT_DATETIME_FORMAT</td>
-          <td class="code"><pre>&#39;m/d/Y P&#39;</pre></td>
+            <td>SHORT_DATETIME_FORMAT</td>
+            <td class="code">
+                <pre>&#39;m/d/Y P&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SHORT_DATE_FORMAT</td>
-          <td class="code"><pre>&#39;m/d/Y&#39;</pre></td>
+            <td>SHORT_DATE_FORMAT</td>
+            <td class="code">
+                <pre>&#39;m/d/Y&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SIGNING_BACKEND</td>
-          <td class="code"><pre>&#39;django.core.signing.TimestampSigner&#39;</pre></td>
+            <td>SIGNING_BACKEND</td>
+            <td class="code">
+                <pre>&#39;django.core.signing.TimestampSigner&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>SILENCED_SYSTEM_CHECKS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>SILENCED_SYSTEM_CHECKS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>STATICFILES_DIRS</td>
-          <td class="code"><pre>[&#39;H:\\fileserver\\static&#39;]</pre></td>
+            <td>STATICFILES_DIRS</td>
+            <td class="code">
+                <pre>[&#39;H:\\fileserver\\static&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>STATICFILES_FINDERS</td>
-          <td class="code"><pre>[&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;,
- &#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;]</pre></td>
+            <td>STATICFILES_FINDERS</td>
+            <td class="code"><pre>[&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;,
+ &#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>STATICFILES_STORAGE</td>
-          <td class="code"><pre>&#39;django.contrib.staticfiles.storage.StaticFilesStorage&#39;</pre></td>
+            <td>STATICFILES_STORAGE</td>
+            <td class="code">
+                <pre>&#39;django.contrib.staticfiles.storage.StaticFilesStorage&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>STATIC_ROOT</td>
-          <td class="code"><pre>None</pre></td>
+            <td>STATIC_ROOT</td>
+            <td class="code">
+                <pre>None</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>STATIC_URL</td>
-          <td class="code"><pre>&#39;/static/&#39;</pre></td>
+            <td>STATIC_URL</td>
+            <td class="code">
+                <pre>&#39;/static/&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TEMPLATES</td>
-          <td class="code"><pre>[{&#39;APP_DIRS&#39;: True,
+            <td>TEMPLATES</td>
+            <td class="code"><pre>[{&#39;APP_DIRS&#39;: True,
   &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
   &#39;DIRS&#39;: [&#39;H:\\fileserver\\templates&#39;],
   &#39;OPTIONS&#39;: {&#39;context_processors&#39;: [&#39;django.template.context_processors.debug&#39;,
                                      &#39;django.template.context_processors.request&#39;,
                                      &#39;django.contrib.auth.context_processors.auth&#39;,
-                                     &#39;django.contrib.messages.context_processors.messages&#39;]}}]</pre></td>
+                                     &#39;django.contrib.messages.context_processors.messages&#39;]}}]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TEST_NON_SERIALIZED_APPS</td>
-          <td class="code"><pre>[]</pre></td>
+            <td>TEST_NON_SERIALIZED_APPS</td>
+            <td class="code">
+                <pre>[]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TEST_RUNNER</td>
-          <td class="code"><pre>&#39;django.test.runner.DiscoverRunner&#39;</pre></td>
+            <td>TEST_RUNNER</td>
+            <td class="code">
+                <pre>&#39;django.test.runner.DiscoverRunner&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>THOUSAND_SEPARATOR</td>
-          <td class="code"><pre>&#39;,&#39;</pre></td>
+            <td>THOUSAND_SEPARATOR</td>
+            <td class="code">
+                <pre>&#39;,&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TIME_FORMAT</td>
-          <td class="code"><pre>&#39;P&#39;</pre></td>
+            <td>TIME_FORMAT</td>
+            <td class="code">
+                <pre>&#39;P&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TIME_INPUT_FORMATS</td>
-          <td class="code"><pre>[&#39;%H:%M:%S&#39;, &#39;%H:%M:%S.%f&#39;, &#39;%H:%M&#39;]</pre></td>
+            <td>TIME_INPUT_FORMATS</td>
+            <td class="code">
+                <pre>[&#39;%H:%M:%S&#39;, &#39;%H:%M:%S.%f&#39;, &#39;%H:%M&#39;]</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>TIME_ZONE</td>
-          <td class="code"><pre>&#39;UTC&#39;</pre></td>
+            <td>TIME_ZONE</td>
+            <td class="code">
+                <pre>&#39;UTC&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USE_I18N</td>
-          <td class="code"><pre>True</pre></td>
+            <td>USE_I18N</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USE_L10N</td>
-          <td class="code"><pre>True</pre></td>
+            <td>USE_L10N</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USE_THOUSAND_SEPARATOR</td>
-          <td class="code"><pre>False</pre></td>
+            <td>USE_THOUSAND_SEPARATOR</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USE_TZ</td>
-          <td class="code"><pre>True</pre></td>
+            <td>USE_TZ</td>
+            <td class="code">
+                <pre>True</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USE_X_FORWARDED_HOST</td>
-          <td class="code"><pre>False</pre></td>
+            <td>USE_X_FORWARDED_HOST</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>USE_X_FORWARDED_PORT</td>
-          <td class="code"><pre>False</pre></td>
+            <td>USE_X_FORWARDED_PORT</td>
+            <td class="code">
+                <pre>False</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>WSGI_APPLICATION</td>
-          <td class="code"><pre>&#39;fileserver.wsgi.application&#39;</pre></td>
+            <td>WSGI_APPLICATION</td>
+            <td class="code">
+                <pre>&#39;fileserver.wsgi.application&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>X_FRAME_OPTIONS</td>
-          <td class="code"><pre>&#39;SAMEORIGIN&#39;</pre></td>
+            <td>X_FRAME_OPTIONS</td>
+            <td class="code">
+                <pre>&#39;SAMEORIGIN&#39;</pre>
+            </td>
         </tr>
 
         <tr>
-          <td>YEAR_MONTH_FORMAT</td>
-          <td class="code"><pre>&#39;F Y&#39;</pre></td>
+            <td>YEAR_MONTH_FORMAT</td>
+            <td class="code">
+                <pre>&#39;F Y&#39;</pre>
+            </td>
         </tr>
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
 
 </div>
 
-  <div id="explanation">
+<div id="explanation">
     <p>
-      You're seeing this error because you have <code>DEBUG = True</code> in your
-      Django settings file. Change that to <code>False</code>, and Django will
-      display a standard page generated by the handler for this status code.
+        You're seeing this error because you have <code>DEBUG = True</code> in your
+        Django settings file. Change that to <code>False</code>, and Django will
+        display a standard page generated by the handler for this status code.
     </p>
-  </div>
+</div>
 
 </body>
 </html>
